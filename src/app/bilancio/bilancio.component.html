@@ -1,0 +1,47 @@
+<html>
+<body>
+    <div class="container"> 
+        <div id="testata">
+            <img id="background" src="../../assets/raining-money-26.gif.webp" >
+            <div id="content">
+                <h1>Gringott's Bank</h1>
+                <h2>dove facciamo levitare i tuoi conti con un <br>leviooosa...non leviosaaaaaaaa</h2>  
+            </div>
+        </div>
+
+        <div>
+            <input [(ngModel)] = "numero" type="number" min="0.01">
+            <button (click) = "aggiungiEntrata()">+</button>
+            <button (click) = "aggiungiUscita()">-</button>
+        </div>
+                   
+        <table>
+            <tr *ngFor="let b of bilancio; let i = index" [ngClass]="{'verde' : b > 0 , 'rosso' : b < 0}" >
+                <td>
+                    {{ b }} €
+                    <button (click)="rimuoviMovimento(i)">Rimuovi</button>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <div class = "somma" [ngClass]="{'a': sommaMovimenti() > 0, 'b': sommaMovimenti() < 0}">
+                        <p> Somma: {{sommaMovimenti() | number:'1.2-2' }} €</p>
+                        <p *ngIf="sommaMovimenti() < 0">Non spendere tutto in cioccorane e burrobirra!</p>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div> 
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
